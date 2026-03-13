@@ -83,7 +83,7 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(0.19 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -126,4 +126,18 @@
   html {
     @apply font-sans;
   }
+}
+
+.dark body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    oklch(0.19 0 0) 0%,
+    oklch(0.17 0.02 180) 50%,
+    oklch(0.14 0.04 170) 100%
+  );
 }
