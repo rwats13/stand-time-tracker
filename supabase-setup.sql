@@ -13,9 +13,8 @@ CREATE TABLE standing_sessions (
   synced_at     TIMESTAMPTZ DEFAULT now()
 );
 
--- 2. Create indexes for efficient queries
+-- 2. Create index for efficient queries (covers date-range lookups and ordering)
 CREATE INDEX idx_sessions_user_date ON standing_sessions (user_id, started_at DESC);
-CREATE INDEX idx_sessions_user_day ON standing_sessions (user_id, (started_at::date));
 
 -- 3. Enable Row Level Security (permissive for v1, tighten in v2 with auth)
 ALTER TABLE standing_sessions ENABLE ROW LEVEL SECURITY;
